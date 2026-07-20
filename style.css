@@ -1,0 +1,391 @@
+/* ==========================================================================
+   1. RESET & ELEMENT DASAR
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #F4F3EF; /* Warna latar belakang broken-white sesuai video figma */
+    color: #1A1A1A;
+    font-family: 'Inter', sans-serif;
+    padding: 0 4%; /* Jarak margin di sisi kiri & kanan halaman web */
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ==========================================================================
+   2. HEADER & NAVIGASI
+   ========================================================================== */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 0;
+}
+
+.logo {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #1A1A1A;
+    letter-spacing: 1px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #1A1A1A;
+    margin-left: 30px;
+    font-size: 15px;
+    transition: opacity 0.3s ease;
+}
+
+.nav-links a:hover {
+    opacity: 0.6;
+}
+
+/* ==========================================================================
+   3. HERO SECTION (DENGAN FOTO PROFIL PROPORSIONAL)
+   ========================================================================== */
+.hero-with-profile {
+    display: grid;
+    grid-template-columns: 1.4fr 0.6fr; /* Teks porsi besar, foto porsi kecil (secukupnya) */
+    gap: 80px;
+    align-items: center; /* Membuat teks dan foto sejajar di tengah secara vertikal */
+    padding: 100px 0 80px 0;
+    max-width: 100%;
+}
+
+.hero-text-content {
+    max-width: 850px;
+}
+
+.hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.8rem;
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 30px;
+}
+
+.hero-subtitle {
+    font-size: 1.1rem;
+    max-width: 600px;
+    opacity: 0.7;
+}
+
+/* Pembungkus luar foto untuk membatasi ukuran maksimal */
+.hero-profile-container {
+    width: 100%;
+    max-width: 320px; /* Membatasi agar foto tidak kebesaran di layar PC desktop */
+    justify-self: end; /* Mendorong posisi wadah foto ke pojok kanan */
+}
+
+/* Kotak foto profil utama */
+.hero-profile-image {
+    width: 100%;
+    aspect-ratio: 3/4; /* Potongan foto potret/vertikal yang elegan */
+    background-color: #E2E0D9; /* Warna placeholder sebelum gambar dimuat */
+    overflow: hidden;
+}
+
+.hero-profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Foto otomatis memotong rapi tanpa merusak aspek rasio */
+}
+
+/* ==========================================================================
+   4. STRUKTUR SECTION & TATA LETAK UMUM
+   ========================================================================== */
+.section-container {
+    padding: 80px 0;
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.section-num {
+    font-size: 14px;
+    margin-right: 20px;
+    opacity: 0.6;
+}
+
+.section-header h2 {
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.divider {
+    border: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Tata Letak Grid Dua Kolom (Dipakai di Services & Contact) */
+.grid-two-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+}
+
+.large-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 400;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.section-desc {
+    opacity: 0.7;
+    max-width: 400px;
+}
+
+/* ==========================================================================
+   5. PORTFOLIO GRID (BISA UNTUK FOTO & VIDEO)
+   ========================================================================== */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Membuat 3 kolom kartu berdampingan */
+    gap: 30px;
+}
+
+.project-card {
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+/* Pembungkus Aset Proyek (Foto / Video) */
+.image-wrapper {
+    background-color: #E2E0D9;
+    aspect-ratio: 4/3; /* Kotak foto dan video bertinggi seragam otomatis */
+    overflow: hidden;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+/* Mengatur Foto dan Video agar Selaras & Rapi */
+.image-wrapper img,
+.image-wrapper video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Mengunci media memenuhi kotak tanpa merusak bentuk asli */
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); /* Transisi hover premium */
+}
+
+/* Efek Zoom-In Lembut Saat Kartu Proyek Disorot Kursor */
+.project-card:hover .image-wrapper img,
+.project-card:hover .image-wrapper video {
+    transform: scale(1.04);
+}
+
+.project-info h3 {
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 12px;
+}
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.project-tags span {
+    font-size: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 3px 12px;
+    border-radius: 2px;
+    opacity: 0.6;
+}
+
+/* ==========================================================================
+   6. SECTION 03: EXPERTISE (DAFTAR KEAHLIAN)
+   ========================================================================== */
+.expertise-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.expertise-item {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding-bottom: 25px;
+    margin-bottom: 25px;
+}
+
+.expertise-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.expertise-item h3 {
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
+.expertise-item h3 span {
+    font-size: 14px;
+    opacity: 0.4;
+    margin-right: 15px;
+}
+
+.expertise-item p {
+    opacity: 0.6;
+    padding-left: 35px;
+    font-size: 15px;
+}
+
+/* ==========================================================================
+   7. SECTION 04: CONTACT & FOOTER
+   ========================================================================== */
+.contact-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    font-weight: 400;
+    line-height: 1.2;
+    margin-top: 10px;
+    margin-bottom: 40px;
+}
+
+.email-link {
+    font-size: 1.5rem;
+    color: #1A1A1A;
+    text-decoration: underline;
+    transition: opacity 0.3s ease;
+}
+
+.email-link:hover {
+    opacity: 0.6;
+}
+
+.contact-details > * {
+    margin-bottom: 35px;
+}
+
+.contact-details > *:last-child {
+    margin-bottom: 0;
+}
+
+.client-profile h3 {
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.client-profile p {
+    opacity: 0.6;
+}
+
+.status {
+    color: #2e7d32;
+    font-size: 14px;
+    margin-top: 5px;
+    font-weight: 500;
+}
+
+.social-links {
+    display: flex;
+    gap: 20px;
+}
+
+.social-links a {
+    color: #1A1A1A;
+    text-decoration: none;
+    border-bottom: 1px solid #1A1A1A;
+    padding-bottom: 2px;
+    font-size: 15px;
+    transition: opacity 0.3s ease;
+}
+
+.social-links a:hover {
+    opacity: 0.5;
+}
+
+/* Tombol Download CV */
+.btn-download {
+    display: inline-block;
+    border: 1px solid #1A1A1A;
+    padding: 12px 28px;
+    text-decoration: none;
+    color: #1A1A1A;
+    font-size: 14px;
+    letter-spacing: 1px;
+    font-weight: 500;
+    transition: background 0.3s, color 0.3s;
+}
+
+.btn-download:hover {
+    background-color: #1A1A1A;
+    color: #F4F3EF;
+}
+
+.footer-bottom {
+    padding: 40px 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    font-size: 13px;
+    opacity: 0.5;
+}
+
+/* ==========================================================================
+   8. RESPONSIVE DESIGN (TAMPILAN TABLET & HANDPHONE)
+   ========================================================================== */
+@media (max-width: 992px) {
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr); /* Tampilan tablet menjadi 2 kolom */
+    }
+    .grid-two-cols {
+        gap: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 0 6%;
+    }
+    .navbar {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    .nav-links a {
+        margin: 0 12px;
+    }
+    
+    /* Responsive Hero Section di HP */
+    .hero-with-profile {
+        grid-template-columns: 1fr; /* Di layar HP susunannya berubah otomatis ke bawah */
+        gap: 40px;
+    }
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    .hero-profile-container {
+        justify-self: start; /* Posisi foto merapat ke kiri sejajar dengan teks di layar HP */
+        max-width: 260px; /* Ukuran foto mengecil secukupnya agar pas di layar kecil */
+    }
+
+    .projects-grid, .grid-two-cols {
+        grid-template-columns: 1fr; /* Grid proyek & keahlian berubah menjadi 1 kolom vertikal */
+        gap: 40px;
+    }
+    .contact-title {
+        font-size: 2.2rem;
+    }
+    .large-heading {
+        font-size: 2rem;
+    }
+}
